@@ -1,0 +1,25 @@
+<!--
+  Simple SIP protocol handler test page
+ -->
+ <html>
+    <head>
+        <title>SIP testing</title>
+    </head>
+    <body>
+        <p id="text-1"> SIP protocol testing page </p>
+    </body>
+    <script type="text/javascript">
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('call')) {
+                const element = document.createElement('a');
+                element.href = "sip://" + urlParams.get('call');
+                element.innerText = "SIP LINK"
+                document.body.appendChild(element);
+            } else {
+                const pElement = document.getElementById('text-1');
+                pElement.innerText = "Test page: Missing 'call' query param";
+            }
+        }());
+    </script>
+    </html>
